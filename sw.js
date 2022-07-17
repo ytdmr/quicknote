@@ -1,10 +1,15 @@
-const root_path = '/quicknote/', js_path = 'static/js/main.70a1333b.js', css_path = 'static/css/main.d4dc965e.css';
+const root_path = '/quicknote/', static_path = root_path + 'static/';
 
 self.addEventListener('install', event => {
   self.skipWaiting();
   event.waitUntil(
     caches.open('v1').then(cache => {
-      return cache.addAll([root_path, root_path + js_path, root_path + css_path]);
+      return cache.addAll([
+        root_path,
+        static_path + 'js/main.70a1333b.js',
+        static_path + 'css/main.d4dc965e.css',
+        'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&family=Source+Code+Pro:wght@400;500;600&display=swap'
+      ]);
     })
   );
 });
